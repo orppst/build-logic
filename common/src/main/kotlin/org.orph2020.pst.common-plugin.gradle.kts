@@ -16,6 +16,7 @@ dependencies {
 
     implementation(enforcedPlatform("org.orph2020.pst.platforms:quarkus-base"))
     implementation("io.quarkus:quarkus-container-image-docker") // or perhaps below is better - esp if you do not have docker installed...
+    implementation(platform("org.orph2020.pst.platforms:pst-base"))
 //    implementation("io.quarkus:quarkus-container-image-jib")
     implementation("io.quarkus:quarkus-minikube")
     testImplementation("io.quarkus:quarkus-junit5")

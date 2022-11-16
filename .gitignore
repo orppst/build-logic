@@ -2,3 +2,5 @@
 /.idea/
 /platforms/.gradle/
 /common/build/
+/common/bin/
+/platforms/pst-dm/.idea/
