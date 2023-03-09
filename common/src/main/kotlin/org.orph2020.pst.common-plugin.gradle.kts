@@ -5,11 +5,12 @@ plugins {// even after all that above the variable is not available in scope htt
     id("io.quarkus")
 }
 
+//this does not always seem to be inherited?
 repositories {
     mavenCentral()
     mavenLocal()
     /*
-    add this repository to pick up the SNAPSHOT version of the IVOA base library - in the future when this
+    add this repository to pick up the SNAPSHOT version of the IVOA base library - in the future  this
     will not be necessary when this library is released as a non-SNAPSHOT version.
      */
     maven {
@@ -23,10 +24,10 @@ group = "org.orph2020.pst"
 dependencies {
 
     implementation(enforcedPlatform("org.orph2020.pst.platforms:quarkus-base"))
-    implementation("io.quarkus:quarkus-container-image-docker") // or perhaps below is better - esp if you do not have docker installed...
+    implementation("io.quarkus:quarkus-container-image-docker") // or perhaps below is better - esp if you do not have docker installed... use docker for now because of permissions
+//   implementation("io.quarkus:quarkus-container-image-jib")
+    implementation("io.quarkus:quarkus-kubernetes")
     implementation(platform("org.orph2020.pst.platforms:pst-base"))
-//    implementation("io.quarkus:quarkus-container-image-jib")
-    implementation("io.quarkus:quarkus-minikube")
     testImplementation("io.quarkus:quarkus-junit5")
 }
 
@@ -45,9 +46,12 @@ tasks.withType<JavaCompile> {
 // recommended in first of above does not seem to work - so doing the more obvious direct java call
 // note also that these are build time properties - run time stuff should still go into each application.properties.
 tasks.withType<QuarkusTask> {
-    System.setProperty("quarkus.container-image.registry","130.88.9.40:9083") // http://redmine.jb.man.ac.uk/issues/6457
-    System.setProperty("quarkus.kubernetes.part-of","proposalTool")
+    System.setProperty("quarkus.container-image.registry","kilburn.jb.man.ac.uk") // http://redmine.jb.man.ac.uk/issues/6457
     System.setProperty("quarkus.container-image.group", "orppst")
+    System.setProperty("quarkus.container-image.build", "true")
+    System.setProperty("quarkus.kubernetes.part-of","proposalTool")
+    System.setProperty("quarkus.kubernetes.namespace","orp-pst")
+    System.setProperty("quarkus.kubernetes.deploy","false")
 }
 
 tasks.test {
