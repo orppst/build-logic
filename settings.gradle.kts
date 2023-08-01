@@ -1,11 +1,16 @@
+
+
 pluginManagement {
+    val quarkusVersion: String by settings
     repositories {
         mavenCentral()
         gradlePluginPortal()
         mavenLocal()
     }
+    plugins {
+        id("io.quarkus") version quarkusVersion
+    }
 }
-//val quarkusVersion: String by settings
 dependencyResolutionManagement {
     repositories {
         gradlePluginPortal()
