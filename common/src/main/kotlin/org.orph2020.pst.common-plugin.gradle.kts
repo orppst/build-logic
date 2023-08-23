@@ -41,11 +41,11 @@ tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
     options.compilerArgs.add("-parameters")
 }
-// https://quarkus.io/guides/gradle-tooling https://quarkus.io/guides/config-reference
+// https://quarkus.io/guides/gradle-tooling#configuring-quarkus-builds https://quarkus.io/guides/config-reference
 // set some global quarkus properties here - note that the systemProperty() call
 // recommended in first of above does not seem to work - so doing the more obvious direct java call
 // note also that these are build time properties - run time stuff should still go into each application.properties.
-tasks.withType<QuarkusTask> {
+tasks.withType<QuarkusTask>().configureEach {
     System.setProperty("quarkus.container-image.registry","kilburn.jb.man.ac.uk") // http://redmine.jb.man.ac.uk/issues/6457
     System.setProperty("quarkus.container-image.group", "orppst")
     System.setProperty("quarkus.container-image.build", "true")
