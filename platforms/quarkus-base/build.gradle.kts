@@ -15,7 +15,7 @@ javaPlatform.allowDependencies()
 dependencies {
     constraints {
         api(enforcedPlatform("io.quarkus.platform:quarkus-bom:3.2.4.Final"))
-        api("org.javastro.ivoa.dm:proposaldm:0.4.0-SNAPSHOT:quarkus")//IMPL special dependency that does not include the
+        api("org.javastro.ivoa.dm:proposaldm:0.4.1-SNAPSHOT:quarkus")//IMPL special dependency that does not include the
 
     }
     api(enforcedPlatform("io.quarkus.platform:quarkus-bom:3.2.4.Final"))
