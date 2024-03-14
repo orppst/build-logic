@@ -47,6 +47,7 @@ tasks.withType<QuarkusTask>().configureEach {
     System.setProperty("quarkus.container-image.build", "true")
     System.setProperty("quarkus.kubernetes.part-of","proposalTool")
     System.setProperty("quarkus.kubernetes.namespace","orp-pst")
+    System.setProperty("quarkus.kubernetes.ingress.ingress-class-name","nginx")
     System.setProperty("quarkus.kubernetes.deploy","false")
 }
 
