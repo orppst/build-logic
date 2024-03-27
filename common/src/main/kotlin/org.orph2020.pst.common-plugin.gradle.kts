@@ -53,4 +53,7 @@ tasks.withType<QuarkusTask>().configureEach {
 
 tasks.test {
     useJUnitPlatform()
+//    testLogging {
+//        events("passed", "skipped", "failed")
+//    }
 }
