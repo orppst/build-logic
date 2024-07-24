@@ -7,6 +7,6 @@ javaPlatform.allowDependencies()
 
 
 dependencies {
-    api("org.javastro.ivoa.dm:proposaldm:0.5.0-SNAPSHOT:quarkus")//IMPL special dependency that does not include the
-    api("org.javastro.ivoa.dm:proposaldm:0.5.0-SNAPSHOT:test") // FIXME will want to remove for deployment
+    api("org.javastro.ivoa.dm:proposaldm:0.5.1-SNAPSHOT:quarkus")//IMPL special dependency that does not include the
+    api("org.javastro.ivoa.dm:proposaldm:0.5.1-SNAPSHOT:test") // FIXME will want to remove for deployment
 }
