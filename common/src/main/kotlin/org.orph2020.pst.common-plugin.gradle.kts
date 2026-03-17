@@ -5,7 +5,7 @@ plugins {// even after all that above the variable is not available in scope htt
     id("io.quarkus")
 }
 
-//this does not always seem to be inherited?
+//this does not always seem to be inherited? https://github.com/gradle/gradle/issues/16654
 repositories {
     mavenCentral()
     mavenLocal()
@@ -27,12 +27,11 @@ group = "org.orph2020.pst"
 
 dependencies {
 
-    implementation(enforcedPlatform("org.orph2020.pst.platforms:quarkus-base"))
+    implementation(enforcedPlatform("io.quarkus.platform:quarkus-bom:3.32.3"))
     implementation("io.quarkus:quarkus-container-image-docker") // or perhaps below is better - esp if you do not have docker installed... use docker for now because of permissions
 //   implementation("io.quarkus:quarkus-container-image-jib")
     implementation("io.quarkus:quarkus-kubernetes")
-    implementation(platform("org.orph2020.pst.platforms:pst-base"))
-    testImplementation("io.quarkus:quarkus-junit5")
+    testImplementation("io.quarkus:quarkus-junit")
 }
 
 
@@ -60,4 +59,15 @@ tasks.test {
 //    testLogging {
 //        events("passed", "skipped", "failed")
 //    }
+}
+
+
+tasks.register("listrepos") { //IMPL - the context that this ends up running in makes this lie
+    doLast {
+        println("Repositories:")
+        project.repositories.map{it as MavenArtifactRepository}
+            .forEach{
+                println("Name: ${it.name}; url: ${it.url}")
+            }
+    }
 }

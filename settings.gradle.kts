@@ -1,3 +1,6 @@
+import org.gradle.kotlin.dsl.maven
+import org.gradle.kotlin.dsl.mavenCentral
+import org.gradle.kotlin.dsl.repositories
 
 
 pluginManagement {
@@ -15,6 +18,8 @@ dependencyResolutionManagement {
     repositories {
         gradlePluginPortal()
         google()
+        mavenLocal()
+        mavenCentral()
     }
 
     // think that version catalogues are almost useless in  plugin/platform use cases - it seems just about impossible to consume them
