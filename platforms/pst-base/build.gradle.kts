@@ -4,11 +4,11 @@ plugins {
 }
 
 group = "org.orph2020.pst.platforms"
-javaPlatform.allowDependencies()
 
 
 dependencies {
-    api(platform("org.orph2020.pst.platforms:pst-dm"))
-    api("org.orph2020.pst:pst-lib")
-
+    constraints {
+        api(enforcedPlatform("io.quarkus.platform:quarkus-bom:3.32.3"))
+        api("org.javastro.ivoa.dm:proposaldm:0.7.1-SNAPSHOT")
+    }
 }
