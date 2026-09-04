@@ -27,7 +27,7 @@ group = "org.orph2020.pst"
 
 dependencies {
 
-    implementation(enforcedPlatform("io.quarkus.platform:quarkus-bom:3.33.1"))
+    implementation(enforcedPlatform("io.quarkus.platform:quarkus-bom:3.33.3.2"))
     implementation("io.quarkus:quarkus-container-image-docker") // or perhaps below is better - esp if you do not have docker installed... use docker for now because of permissions
 //   implementation("io.quarkus:quarkus-container-image-jib")
     implementation("io.quarkus:quarkus-kubernetes")
